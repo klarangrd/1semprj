@@ -5,10 +5,16 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
       <link rel="stylesheet" href="">
-      <script>d3</script>
+      <script src="https://d3js.org/d3.v6.js"></script>
 </head>
 <body>
+      <script src="script.js"></script>
+
+      <script>
+      d3.json("10.10.132.63:3000/population", function(data){
+            console.log(data);
+      });
       
-      <script></script>
+      </script>
 </body>
 </html>
