@@ -8,13 +8,17 @@
       <script src="https://d3js.org/d3.v6.js"></script>
 </head>
 <body>
-      <script src="script.js"></script>
+      
 
       <script>
-      d3.json("10.10.132.63:3000/population", function(data){
+      d3.json("http://localhost:3000/population").then( function(data){
             console.log(data);
+            graf(data);
       });
       
+      function graf(data){
+            
+      }
       </script>
 </body>
 </html>

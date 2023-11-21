@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const { Client } = require("pg");
-var pg = require('pg');
+const pg = require('pg');
+const cors = require("cors");
 const klient = new Client({
 user: "bbjectmt",
 host: "balarama.db.elephantsql.com",
@@ -15,7 +16,7 @@ ssl: {
 rejectUnauthorized: false,
 },
 });
-
+app.use(cors({origin:"*"}));
 const qry1 = 'SELECT * FROM populationdata';
 klient.connect();
 app.get("/population", async (req, res) => {
