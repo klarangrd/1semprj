@@ -17,6 +17,7 @@ rejectUnauthorized: false,
 },
 });
 app.use(cors({origin:"*"}));
+
 const qry1 = 'SELECT * FROM populationdata';
 klient.connect();
 app.get("/population", async (req, res) => {
@@ -33,6 +34,7 @@ res.json({
 })
 };
 })
+
 const qry2 = 'SELECT * FROM kordinater';
 app.get("/kordinater", async (req, res) => {
     try {
@@ -48,9 +50,11 @@ app.get("/kordinater", async (req, res) => {
     })
     };
     })
+
 app.listen(port, () => {
 console.log(`Appl. lytter på http://localhost:${port}`);
 });
+
 /*
 En anden måde at gøre det på ved at bruge en connection string. Det fylder lidt
 mindre,
