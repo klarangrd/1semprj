@@ -11,6 +11,7 @@
     <h1>Lionfish Increase and Reef Sharks Decline</h1>
 
     <div id="lineGraph"></div>
+    <button onclick="showStrokes()">Show Strokes</button>
 
     <script>
 
@@ -53,18 +54,46 @@
                 // lionfish line
                 svg.append("path")
                     .data([lineData])
-                    .attr("class", "line")
+                    .attr("class", "line lionfish-line")
                     .attr("d", lionfishLine)
-                    .style("stroke", "red")
-                    .style("fill", "none");
+                    .attr("stroke-width", 3)
+                    .style("fill", "none")
+                    .on("mouseover", function() {
+                        d3.select(".lionfish-label").style("display", "block");
+                    })
+                    .on("mouseout", function() {
+                        d3.select(".lionfish-label").style("display", "none");
+                    });
+
+                // Add lionfish label
+                svg.append("text")
+                    .attr("class", "line-label lionfish-label")
+                    .attr("x", width - 250)
+                    .attr("y", yScale(lineData[lineData.length - 1].lionfish_pop))
+                    .text("Lionfish")
+                    .style("display", "none");
 
                 // reef shark line
                 svg.append("path")
                     .data([lineData])
-                    .attr("class", "line")
+                    .attr("class", "line reefshark-line")
                     .attr("d", reefSharkLine)
-                    .style("stroke", "blue")
-                    .style("fill", "none");
+                    .attr("stroke-width", 3)
+                    .style("fill", "none")
+                    .on("mouseover", function() {
+                        d3.select(".reefshark-label").style("display", "block");
+                    })
+                    .on("mouseout", function() {
+                        d3.select(".reefshark-label").style("display", "none");
+                    });
+
+                // Add reef shark label
+                svg.append("text")
+                    .attr("class", "line-label reefshark-label")
+                    .attr("x", width - 200)
+                    .attr("y", yScale(lineData[lineData.length - 5].shark_pop))
+                    .text("Reef Shark")
+                    .style("display", "none");
 
                 // x-axis
                 svg.append("g")
@@ -89,6 +118,14 @@
                     .style("text-anchor", "middle")
                     .text("Population");
 
+                // Initial hide strokes
+                d3.selectAll(".line").style("stroke", "none");
+
+                // Function to show strokes on button click
+                window.showStrokes = function() {
+                    d3.select(".lionfish-line").style("stroke", "red");
+                    d3.select(".reefshark-line").style("stroke", "blue");
+                };
             })
             .catch(error => console.error("Error loading data:", error));
     </script>
