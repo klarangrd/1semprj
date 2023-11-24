@@ -10,12 +10,12 @@
 
     <script>
 
-// set the dimensions and margins of the graph
+// Sætter dimensioner for grafen
 let margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
+// SVGen bliver appended til siden
 let svg = d3.select("#my_dataviz")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
@@ -23,6 +23,7 @@ let svg = d3.select("#my_dataviz")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+// Tooltip objekt appendes til siden. Skal bruges senere til at vise absolutte tal på grafen
 let Tooltip = d3.select("#Tooltip")
 .append("div")
 .style("opacity", 0)
@@ -32,12 +33,12 @@ let Tooltip = d3.select("#Tooltip")
 .style("border-radius", "5px")
 .style("padding", "5px")
 .style("position","absolute")
-.style("left","150px" )
-.style("top","150px" )
 
+// Loader data og gemmer det i fishdata
 d3.json("http://localhost:3000/population").then(function (data) {
   const fishdata = data.LionfishCloud
 
+  // X-akse
   let x = d3.scaleBand()
   .range([ 0, width ])
   .domain(fishdata.map(function(fishdata) { return fishdata.year; }))
@@ -50,13 +51,14 @@ d3.json("http://localhost:3000/population").then(function (data) {
   .attr("transform", "translate(-10,0)rotate(-45)")
   .style("text-anchor", "end");
 
-// Add Y axis
+// Y-akse
   let y = d3.scaleLinear()
   .domain([0, 13000])
   .range([ height, 0]);
   svg.append("g")
   .call(d3.axisLeft(y));  
 
+  // Barchartet laves, med mouseover/move/leave for hver bar
   svg.selectAll("mybar")
   .data(fishdata)
   .enter()
@@ -68,7 +70,7 @@ d3.json("http://localhost:3000/population").then(function (data) {
   .attr("fill", "#69b3a2")
   .attr("id", function(d){return d.lionfish_pop})
   .on("mouseover", function(d){
-      Tooltip
+    Tooltip
       .style("opacity", 1)
       .html("Population: " + this.id)
       d3.select(this) 
@@ -76,33 +78,24 @@ d3.json("http://localhost:3000/population").then(function (data) {
       .style("opacity", .8)
       console.log("mouseover");
       console.log(d.lionfish_pop);
-    })
+  })
     .on("mousemove", (event) => {
       let pos = d3.pointer(event);
       Tooltip
       .style("left", (pos[0] + 90) + "px")
       .style("top", (pos[1]) + "px")
-     
-      //console.log(pos[0],pos[1]);
     })
-    .on("mouseleave",function(d){
+    .on("mouseleave", function(d){
       Tooltip
       .style("opacity", 0)
       d3.select(this)
       .style("stroke", "none")
       .style("opacity", 1)
       console.log("mouseleave");
-    })})
+    })
+  })
 
-    /*
-    function mouseMove(){
-      let pos = d3.pointer(event);
-      Tooltip
-      .style("left", (pos[0] + 70) + "px")
-      .style("top", (pos[1]) + "px")
-      console.log("called");
-    }
-     */       
+    
     </script>
 </body>
 </html>
