@@ -29,3 +29,13 @@ VALUES (2010,(SELECT COUNT("year") FROM lionfish_tmp WHERE "year" = 2010),(SELEC
 CREATE VIEW kordinater AS
 SELECT lionfish_tmp.longetude,lionfish_tmp.latitude
 FROM lionfish_tmp;
+
+-- Vores kordinater i datasættet er formateret forkert, der er mange der har ekstra kommaer
+-- og kommaer forkerte steder, så vi fjerner først alle kommaerne og indsætter dem igen efter 
+-- henholdsvis anden og tredje tegn. Alt efter om det er longitude eller latitude
+UPDATE lionfish_tmp
+SET latitude = left(translate(latitude, '.', ''), 2) || '.' || right(translate(latitude, '.', ''), -2)
+
+UPDATE lionfish_tmp
+SET longitude = left(translate(longitude, '.', ''), 3) || '.' || right(translate(longitude, '.', ''), -3)
+
