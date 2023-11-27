@@ -84,5 +84,6 @@ span {
   font-weight: bold;
   color: red;
 }
-#forside {
+#forsidebillede {
+  object-fit: fill;
 }
