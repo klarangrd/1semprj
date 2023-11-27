@@ -82,6 +82,7 @@
           .attr("id", function (d) {
             return d.lionfish_pop;
           })
+          //
           .on("mouseover", function (d) {
             Tooltip.style("opacity", 1).html("Population: " + this.id);
             d3.select(this).style("stroke", "black").style("opacity", 0.8);
