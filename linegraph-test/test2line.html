@@ -1,149 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>haj og dragefisk</title>
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
-  </head>
-  <body>
+<style>
+    .tooltip {
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        pointer-events: none;
+        display: none; 
+    }
+</style>
+</head>
+<body>
     <h1>Lionfish Increase and Reef Sharks Decline</h1>
 
     <div id="lineGraph"></div>
-    <button onclick="showStrokes()">Show Strokes</button>
-
-    <script>
-      const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-      const width = 600 - margin.left - margin.right;
-      const height = 400 - margin.top - margin.bottom;
-
-      const svg = d3
-        .select("#lineGraph")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-      // Loading the data
-      d3.json("http://localhost:3000/population") // Assuming this is your external JSON file
-        .then(function (data) {
-          const lineData = data.LionfishCloud;
-
-          // x and y axes scale
-          const xScale = d3
-            .scaleLinear()
-            .domain(d3.extent(lineData, (d) => d.year)) // Use extent to dynamically set the domain
-            .range([0, width]);
-
-          const yScale = d3
-            .scaleLinear()
-            .domain([
-              0,
-              d3.max(lineData, (d) => Math.max(d.lionfish_pop, d.shark_pop)),
-            ])
-            .range([height, 0]);
-
-          // line for lionfish and reef sharks
-          const lionfishLine = d3
-            .line()
-            .curve(d3.curveMonotoneX) // Smoothing the line
-            .x((d) => xScale(d.year))
-            .y((d) => yScale(d.lionfish_pop));
-
-          const reefSharkLine = d3
-            .line()
-            .curve(d3.curveMonotoneX) // Smoothing the line
-            .x((d) => xScale(d.year))
-            .y((d) => yScale(d.shark_pop));
-
-          // lionfish line
-          svg
-            .append("path")
-            .data([lineData])
-            .attr("class", "line lionfish-line")
-            .attr("d", lionfishLine)
-            .attr("stroke-width", 3)
-            .style("fill", "none")
-            .on("mouseover", function () {
-              d3.select(".lionfish-label").style("display", "block");
-            })
-            .on("mouseout", function () {
-              d3.select(".lionfish-label").style("display", "none");
-            });
-
-          // Add lionfish label
-          svg
-            .append("text")
-            .attr("class", "line-label lionfish-label")
-            .attr("x", width - 250)
-            .attr("y", yScale(lineData[lineData.length - 1].lionfish_pop))
-            .text("Lionfish")
-            .style("display", "none");
-
-          // reef shark line
-          svg
-            .append("path")
-            .data([lineData])
-            .attr("class", "line reefshark-line")
-            .attr("d", reefSharkLine)
-            .attr("stroke-width", 3)
-            .style("fill", "none")
-            .on("mouseover", function () {
-              d3.select(".reefshark-label").style("display", "block");
-            })
-            .on("mouseout", function () {
-              d3.select(".reefshark-label").style("display", "none");
-            });
-
-          // Add reef shark label
-          svg
-            .append("text")
-            .attr("class", "line-label reefshark-label")
-            .attr("x", width - 200)
-            .attr("y", yScale(lineData[lineData.length - 5].shark_pop))
-            .text("Reef Shark")
-            .style("display", "none");
-
-          // x-axis
-          svg
-            .append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(xScale));
-
-          // y-axis
-          svg.append("g").call(d3.axisLeft(yScale));
-
-          // labels
-          svg
-            .append("text")
-            .attr(
-              "transform",
-              "translate(" + width / 2 + " ," + (height + margin.top + 10) + ")"
-            )
-            .style("text-anchor", "middle")
-            .text("Year");
-
-          svg
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0 - (margin.left + 10))
-            .attr("x", 0 - height / 2)
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Population");
-
-          // Initial hide strokes
-          d3.selectAll(".line").style("stroke", "none");
-
-          // Function to show strokes on button click
-          window.showStrokes = function () {
-            d3.select(".lionfish-line").style("stroke", "red");
-            d3.select(".reefshark-line").style("stroke", "blue");
-          };
-        })
-        .catch((error) => console.error("Error loading data:", error));
-    </script>
-  </body>
+    <button onclick="showStrokes()">Show data!</button>
+<script src="linegraph.js"></script>
+</body>
 </html>
