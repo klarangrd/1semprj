@@ -1,7 +1,7 @@
 // Sætter dimensioner for grafen
 let margin = { top: 30, right: 30, bottom: 70, left: 60 },
-  width = 460 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
+  width = 650 - margin.left - margin.right,
+  height = 650 - margin.top - margin.bottom;
 
 // SVGen bliver appended til siden
 let svg = d3
