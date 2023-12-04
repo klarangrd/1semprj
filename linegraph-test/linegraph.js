@@ -1,7 +1,7 @@
 //setting up the area of the svg 
-const margin = { top: 30, right: 20, bottom: 40, left: 60 }; 
-const width = 600 - margin.left - margin.right;
-const height = 400 - margin.top - margin.bottom;
+const margin = { top: 30, right: 30, bottom: 50, left: 70 }; 
+const width = 800 - margin.left - margin.right;
+const height = 500 - margin.top - margin.bottom;
 
 //setting up the svg
 const svg = d3.select("#lineGraph") 
@@ -130,25 +130,27 @@ d3.json("http://localhost:3000/population")
         svg.append("text")
             .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 10) + ")")
             .style("text-anchor", "middle")
-            .text("Year");
+            .text("Year")
+            .style("font-size", "20px");
 
         // y-axis label
         svg.append("text")
             .attr("transform", "rotate(-90)")
-            .attr("y", 0 - (margin.left + 5))
+            .attr("y", 0 - (margin.left))
             .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Population");
+            .text("Population")
+            .style("font-size", "20px");
 
         // Title
         svg.append("text")
             .attr("x", width / 2)
             .attr("y", -10)
             .attr("text-anchor", "middle")
-            .style("font-size", "25px")
+            .style("font-size", "18px")
             .style("text-decoration", "underline")
-            .text("lionfish vs reef shark population 2010-2018");
+            .text("Lionfish vs Reef Shark Population (2010-2018)");
 
         // Box 1 (Lionfish)
         svg.append("rect")
@@ -161,7 +163,8 @@ d3.json("http://localhost:3000/population")
         svg.append("text")
             .attr("x", width - 65)
             .attr("y", 25)
-            .text("lionfish");
+            .text("Lionfish")
+            .style("font-size", "12px");
 
         // Box 2 (Reef Shark)
         svg.append("rect")
@@ -174,7 +177,8 @@ d3.json("http://localhost:3000/population")
         svg.append("text")
             .attr("x", width - 65)
             .attr("y", 55)
-            .text("reef shark");
+            .text("Reef Shark")
+            .style("font-size", "12px");
 
         // hiding the stroke before the button is clicked
         d3.selectAll(".line").style("stroke", "none");
