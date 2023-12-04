@@ -2,7 +2,7 @@ body {
   background-color: beige;
 }
 
-button.buttons {
+/*button.buttons {
   position: absolute;
   text-align: center;
   width: 100px;
@@ -75,7 +75,7 @@ button.buttons img:hover {
   100% {
     transform: scale(1);
   }
-}
+}*/
 h1 {
   position: absolute;
   font-size: 50px;
