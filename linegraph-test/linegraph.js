@@ -148,7 +148,7 @@ d3.json("http://localhost:3000/population")
             .attr("text-anchor", "middle")
             .style("font-size", "25px")
             .style("text-decoration", "underline")
-            .text("ionfish vs Reef shark population 2010-2018");
+            .text("lionfish vs reef shark population 2010-2018");
 
         // Box 1 (Lionfish)
         svg.append("rect")
