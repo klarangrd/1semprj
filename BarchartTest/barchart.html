@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <script src="https://d3js.org/d3.v6.js"></script>
+
+    <style></style>
   </head>
   <body>
     <div id="my_dataviz"></div>
@@ -72,22 +74,19 @@
             return x(d.year);
           })
           .attr("y", function (d) {
-            return y(d.lionfish_pop);
+            return y(0);
           })
           .attr("width", x.bandwidth())
           .attr("height", function (d) {
-            return height - y(d.lionfish_pop);
+            return height - y(0);
           })
           .attr("fill", "#69b3a2")
           .attr("id", function (d) {
             return d.lionfish_pop;
           })
-          //
           .on("mouseover", function (d) {
             Tooltip.style("opacity", 1).html("Population: " + this.id);
             d3.select(this).style("stroke", "black").style("opacity", 0.8);
-            console.log("mouseover");
-            console.log(d.lionfish_pop);
           })
           .on("mousemove", (event) => {
             let pos = d3.pointer(event);
@@ -99,7 +98,20 @@
           .on("mouseleave", function (d) {
             Tooltip.style("opacity", 0);
             d3.select(this).style("stroke", "none").style("opacity", 1);
-            console.log("mouseleave");
+          });
+
+        svg
+          .selectAll("rect")
+          .transition()
+          .duration(800)
+          .attr("y", function (d) {
+            return y(d.lionfish_pop);
+          })
+          .attr("height", function (d) {
+            return height - y(d.lionfish_pop);
+          })
+          .delay(function (d, i) {
+            return i * 100;
           });
       });
     </script>
