@@ -60,12 +60,13 @@ d3.json("http://localhost:3000/population").then(function (data) {
     .attr("x", function (d) {
       return x(d.year);
     })
+    // Højde er 0 til at starte med for senere at animere til den rigtige højde
     .attr("y", function (d) {
-      return y(d.lionfish_pop);
+      return y(0);
     })
     .attr("width", x.bandwidth())
     .attr("height", function (d) {
-      return height - y(d.lionfish_pop);
+      return height - y(0);
     })
     .attr("fill", "#69b3a2")
     .attr("id", function (d) {
@@ -83,5 +84,20 @@ d3.json("http://localhost:3000/population").then(function (data) {
     .on("mouseleave", function (d) {
       Tooltip.style("opacity", 0);
       d3.select(this).style("stroke", "none").style("opacity", 1);
+    });
+
+  // Animation for bars
+  svg
+    .selectAll("rect")
+    .transition()
+    .duration(800)
+    .attr("y", function (d) {
+      return y(d.lionfish_pop);
+    })
+    .attr("height", function (d) {
+      return height - y(d.lionfish_pop);
+    })
+    .delay(function (d, i) {
+      return i * 100;
     });
 });
