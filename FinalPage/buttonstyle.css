@@ -117,6 +117,7 @@ span {
   padding: 20px;
   color: white;
   height: 100px;
+  filter: drop-shadow(0 0 0.75rem rgb(0, 69, 133));
 }
 
 #map-graph {
@@ -131,4 +132,5 @@ span {
 #fishimage {
   max-height: 400px;
   max-width: 400px;
+  filter: drop-shadow(0 0 0.75rem rgb(0, 69, 133));
 }
