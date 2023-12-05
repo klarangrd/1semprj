@@ -1,5 +1,5 @@
 body {
-  background-color: beige;
+  background-color: rgb(10, 101, 137);
 }
 
 /*button.buttons {
@@ -78,11 +78,11 @@ button.buttons img:hover {
 }*/
 h1 {
   position: absolute;
-  font-size: 50px;
-  left: 40%;
-  top: 50%;
-
-  color: white;
+  font-size: 80px;
+  left: 16%;
+  top: 35%;
+  color: rgb(88, 149, 185);
+  text-shadow: 4px 4px 8px #000000;
 }
 @font-face {
   font-family: "Source Code Pro ExtraLight";
@@ -134,4 +134,9 @@ span {
   max-height: 400px;
   max-width: 400px;
   filter: drop-shadow(0 0 0.75rem rgb(0, 69, 133));
+  border-radius: 10%;
+}
+
+#dragefiskvideo {
+  box-shadow: 10px 10px 5px 12px lightblue;
 }
