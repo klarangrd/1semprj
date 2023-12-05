@@ -2,7 +2,7 @@ body {
   background-color: beige;
 }
 
-button.buttons {
+/*button.buttons {
   position: absolute;
   text-align: center;
   width: 100px;
@@ -75,7 +75,7 @@ button.buttons img:hover {
   100% {
     transform: scale(1);
   }
-}
+}*/
 h1 {
   position: absolute;
   font-size: 50px;
@@ -102,16 +102,21 @@ span {
   justify-content: space-evenly;
 }
 
+.container2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .txt-box {
   background-color: rgba(0, 132, 255, 0.731);
   border: 5px;
   border-radius: 25px;
   text-align: center;
-  margin-top: 35px;
-  margin-bottom: 70px;
-  margin-right: 25px;
+  margin-right: 25 px;
   padding: 20px;
   color: white;
+  height: 100px;
 }
 
 #map-graph {
@@ -121,4 +126,9 @@ span {
   text-align: center;
   padding-top: 250px;
   border-radius: 25px;
+}
+
+#fishimage {
+  max-height: 400px;
+  max-width: 400px;
 }

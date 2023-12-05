@@ -1,3 +1,6 @@
+Linegraph();
+
+function Linegraph(){
 //setting up the area of the svg 
 const margin = { top: 30, right: 30, bottom: 50, left: 70 }; 
 const width = 800 - margin.left - margin.right;
@@ -190,3 +193,4 @@ d3.json("http://localhost:3000/population")
         };
     })
     .catch(error => console.error("Error loading data:", error));
+};
