@@ -118,6 +118,7 @@ span {
   color: white;
   height: 100px;
   filter: drop-shadow(0 0 0.75rem rgb(0, 69, 133));
+  line-height: 1.6;
 }
 
 #map-graph {
