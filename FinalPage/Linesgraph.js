@@ -13,7 +13,7 @@ const svg = d3.select("#lineGraph")
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+    
 // inserting the data from our database
 d3.json("http://localhost:3000/population") 
     .then(function (data) {
