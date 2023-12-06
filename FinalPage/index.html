@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="buttonstyle.css" />
     <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="https://unpkg.com/@turf/turf@6.3.0"></script>
     <script src="btnscript.js"></script>
   </head>
 
@@ -47,7 +48,13 @@
     </div>
 
     <div class="flex-container" id="mapgraph">
-      <div id="map-graph">-->Map graf her<--</div>
+      <script src="map.js"></script>
+
+      <label for="chooseYear">Choose Year:</label>
+      <select id="chosenYear"></select>
+      <button onclick="selectedYear()">Search</button>
+      <button onclick="zoominout(true)">+</button>
+      <button onclick="zoominout(false)">-</button>
     </div>
 
     <div class="flex-container" id="linechart">
@@ -69,6 +76,9 @@
         toppen <img id="arrow" src="/animatedbuttons/Arrow_downn.png" height:
         "50%" />
       </button>
+      <div id=linetxtbox" class="txt-box">
+        filler blah blah         filler blah blah         filler blah blah
+      </div>
     </div>
   </body>
 </html>
