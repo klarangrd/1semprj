@@ -6,6 +6,7 @@ function barChart() {
     width = 600 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
+  let chartColor = "#f1e4a0";
   // SVGen bliver appended til siden
   let svg = d3
     .select("#my_dataviz")
@@ -53,12 +54,25 @@ function barChart() {
       .call(d3.axisBottom(x))
       .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end");
+      .style("text-anchor", "end")
+      .style("fill", chartColor);
 
     // Y-akse
     let y = d3.scaleLinear().domain([0, 13000]).range([height, 0]);
-    svg.append("g").call(d3.axisLeft(y));
+    svg
+      .append("g")
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+      .style("fill", chartColor);
 
+    svg
+      .append("text")
+      .attr("x", width / 2)
+      .attr("y", -5)
+      .attr("text-anchor", "middle")
+      .style("font-size", "36px")
+      .style("fill", chartColor)
+      .text("Antal Dragefisk i Caribien");
     // Barchartet laves, med mouseover/move/leave for hver bar
     svg
       .selectAll("mybar")
@@ -76,6 +90,7 @@ function barChart() {
         return height - y(0);
       })
       .attr("fill", "#69b3a2")
+      .attr("style", "outline: solid black")
       .attr("id", function (d) {
         return d.lionfish_pop;
       })

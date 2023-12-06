@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(10, 101, 137);
+  background-color: #0a6589;
 }
 
 button.buttons {
@@ -41,11 +41,14 @@ button.buttons {
   height: 50px;
 }
 
-btn4 {
+#btn4 {
   width: 50px;
   height: 50px;
 }
 
+.graphbtn {
+  background-color: #000000;
+}
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -68,7 +71,7 @@ button.buttons img {
   height: 25px;
 }
 
-button:hover {
+.buttons:hover {
   animation: pulse 0s;
   transform: scale(1.1);
   background: linear-gradient(
@@ -98,7 +101,7 @@ button.buttons img:hover {
 h1 {
   position: absolute;
   font-size: 80px;
-  left: 16%;
+  left: 20%;
   top: 35%;
   color: rgb(88, 149, 185);
   text-shadow: 4px 4px 8px #000000;
@@ -130,13 +133,15 @@ span {
   align-items: center;
 }
 .txt-box {
-  background-color: rgba(0, 132, 255, 0.731);
+  background-color: rgba(0, 132, 255, 0.484);
   border: 5px;
   border-radius: 25px;
   text-align: center;
   padding: 20px;
+  margin: 20px;
   color: white;
-  height: 100px;
+  height: 200px;
+  width: 360px;
   filter: drop-shadow(0 0 0.75rem rgb(0, 69, 133));
   line-height: 1.6;
 }
@@ -155,6 +160,7 @@ span {
   max-width: 400px;
   filter: drop-shadow(0 0 0.75rem rgb(0, 69, 133));
   border-radius: 10%;
+  margin-top: 10px;
 }
 
 #dragefiskvideo {
