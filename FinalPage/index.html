@@ -51,15 +51,15 @@
       <script src="map.js"></script>
 
       <label for="chooseYear">Choose Year:</label>
-      <select id="chosenYear"></select>
-      <button id="" onclick="selectedYear()">Search</button>
-      <button onclick="zoominout(true)">+</button>
-      <button onclick="zoominout(false)">-</button>
+      <select class="graphbtn" id="chosenYear"></select>
+      <button class="graphbtn" onclick="selectedYear()">Search</button>
+      <button class="graphbtn" onclick="zoominout(true)">+</button>
+      <button class="graphbtn" onclick="zoominout(false)">-</button>
     </div>
 
     <div class="flex-container" id="linechart">
       <div id="lineGraph"></div>
-      <button onclick="showStrokes()">Show data!</button>
+      <button class="graphbtn" onclick="showStrokes()">Show data!</button>
       <style>
         .tooltip {
           position: absolute;
@@ -72,12 +72,12 @@
         }
       </style>
       <script src="Linesgraph.js"></script>
-      <button class="buttons" id="btn4" onclick="smoothScroll('#linechart');">
+      <button class="buttons" id="btn4" onclick="smoothScroll('#forside');">
         toppen <img id="arrow" src="/animatedbuttons/Arrow_downn.png" height:
         "50%" />
       </button>
-      <div id=linetxtbox" class="txt-box">
-        filler blah blah         filler blah blah         filler blah blah
+      <div id="linetxtbox" class="txt-box">
+        filler blah blah filler blah blah filler blah blah
       </div>
     </div>
   </body>

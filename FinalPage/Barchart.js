@@ -68,7 +68,6 @@ function barChart() {
     svg
       .append("text")
       .attr("x", width / 2)
-      .attr("y", -5)
       .attr("text-anchor", "middle")
       .style("font-size", "36px")
       .style("fill", chartColor)
