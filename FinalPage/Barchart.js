@@ -1,9 +1,10 @@
 barChart();
+
 function barChart() {
   // Sætter dimensioner for grafen
   let margin = { top: 30, right: 30, bottom: 70, left: 60 },
-    width = 650 - margin.left - margin.right,
-    height = 650 - margin.top - margin.bottom;
+    width = 600 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
   // SVGen bliver appended til siden
   let svg = d3
@@ -29,6 +30,11 @@ function barChart() {
   // Loader data og gemmer det i fishdata
   d3.json("http://localhost:3000/population").then(function (data) {
     const fishdata = data.LionfishCloud;
+
+    // Giver knappen en funktion der kalder barchart animationen
+    document.getElementById("barKnap").onclick = function () {
+      barAnimation();
+    };
 
     // X-akse
     let x = d3
@@ -62,9 +68,8 @@ function barChart() {
       .attr("x", function (d) {
         return x(d.year);
       })
-      // Højde er 0 til at starte med for senere at animere til den rigtige højde
       .attr("y", function (d) {
-        return y(0);
+        return y(0); // Højde er 0 til at starte med for senere at animere til den rigtige højde
       })
       .attr("width", x.bandwidth())
       .attr("height", function (d) {
@@ -74,17 +79,13 @@ function barChart() {
       .attr("id", function (d) {
         return d.lionfish_pop;
       })
-      //
       .on("mouseover", function (d) {
         Tooltip.style("opacity", 1).html("Population: " + this.id);
         d3.select(this).style("stroke", "black").style("opacity", 0.8);
       })
       .on("mousemove", (event) => {
         let pos = d3.pointer(event);
-        Tooltip.style("left", pos[0] + 90 + "px").style(
-          "top",
-          pos[1] + 700 + "px"
-        );
+        Tooltip.style("left", pos[0] + "px").style("top", pos[1] + 500 + "px");
       })
       .on("mouseleave", function (d) {
         Tooltip.style("opacity", 0);
@@ -92,18 +93,20 @@ function barChart() {
       });
 
     // Animation for bars
-    svg
-      .selectAll("rect")
-      .transition()
-      .duration(800)
-      .attr("y", function (d) {
-        return y(d.lionfish_pop);
-      })
-      .attr("height", function (d) {
-        return height - y(d.lionfish_pop);
-      })
-      .delay(function (d, i) {
-        return i * 100;
-      });
+    function barAnimation() {
+      svg
+        .selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("y", function (d) {
+          return y(d.lionfish_pop);
+        })
+        .attr("height", function (d) {
+          return height - y(d.lionfish_pop);
+        })
+        .delay(function (d, i) {
+          return i * 100;
+        });
+    }
   });
 }
