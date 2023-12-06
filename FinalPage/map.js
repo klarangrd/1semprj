@@ -63,7 +63,7 @@ function updateMap(filterData) {
 }
 //svg Container for the Map
 const svg = d3
-  .select("body")
+  .select("#maparea")
   .append("svg")
   .attr("width", w)
   .attr("height", h)
