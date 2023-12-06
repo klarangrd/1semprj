@@ -1,6 +1,6 @@
 Linegraph();
 
-function Linegraph(){
+function Linegraph(){//put everything inside a function due to errors with having the same names like margin, width, height etc
 //setting up the area of the svg 
 const margin = { top: 30, right: 30, bottom: 50, left: 70 }; 
 const width = 800 - margin.left - margin.right;
@@ -123,18 +123,22 @@ d3.json("http://localhost:3000/population")
         // x-axis
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(xScale));
+            .call(d3.axisBottom(xScale))
+            .style("stroke", "white");
 
         // y-axis
         svg.append("g")
-            .call(d3.axisLeft(yScale));
+            .call(d3.axisLeft(yScale))
+            .style("stroke", "white");
+
 
         // x-axis label
         svg.append("text")
             .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 10) + ")")
             .style("text-anchor", "middle")
             .text("Year")
-            .style("font-size", "20px");
+            .style("font-size", "20px")
+            .style("fill", "white");
 
         // y-axis label
         svg.append("text")
@@ -144,7 +148,9 @@ d3.json("http://localhost:3000/population")
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("Population")
-            .style("font-size", "20px");
+            .style("font-size", "20px")
+            .style("fill", "white");
+
 
         // Title
         svg.append("text")
@@ -153,6 +159,7 @@ d3.json("http://localhost:3000/population")
             .attr("text-anchor", "middle")
             .style("font-size", "18px")
             .style("text-decoration", "underline")
+            .style("fill", "white")
             .text("Lionfish vs Reef Shark Population (2010-2018)");
 
         // Box 1 (Lionfish)
@@ -167,7 +174,8 @@ d3.json("http://localhost:3000/population")
             .attr("x", width - 65)
             .attr("y", 25)
             .text("Lionfish")
-            .style("font-size", "12px");
+            .style("font-size", "12px")
+            .style("fill", "white");
 
         // Box 2 (Reef Shark)
         svg.append("rect")
@@ -181,7 +189,8 @@ d3.json("http://localhost:3000/population")
             .attr("x", width - 65)
             .attr("y", 55)
             .text("Reef Shark")
-            .style("font-size", "12px");
+            .style("font-size", "12px")
+            .style("fill", "white");            
 
         // hiding the stroke before the button is clicked
         d3.selectAll(".line").style("stroke", "none");
