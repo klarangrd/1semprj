@@ -97,7 +97,7 @@ function Linegraph() {
         .attr("class", "line lionfish-line")
         .attr("id", "lionfish")
         .attr("d", lionfishLine)
-        .attr("stroke-width", 3)
+        .attr("stroke-width", 3.5)
         .style("fill", "none")
         .on("mouseover", function () {
           tooltip.style("display", "block");
@@ -123,7 +123,7 @@ function Linegraph() {
         .attr("class", "line reefshark-line")
         .attr("id", "shark")
         .attr("d", reefSharkLine)
-        .attr("stroke-width", 3)
+        .attr("stroke-width", 3.5)
         .style("fill", "none")
         .on("mouseover", function () {
           tooltip.style("display", "block");
