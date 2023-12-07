@@ -97,8 +97,8 @@ function barChart() {
         Tooltip.style("opacity", 1).html("Population: " + this.id);
         d3.select(this).style("stroke", "black").style("opacity", 0.8);
       })
-      .on("mousemove", (event) => {
-        let pos = d3.pointer(event);
+      .on("mousemove", function (d) {
+        let pos = d3.mouse(this);
         Tooltip.style("left", pos[0] + "px").style("top", pos[1] + 500 + "px");
       })
       .on("mouseleave", function (d) {

@@ -29,17 +29,19 @@ button.buttons {
   top: 210%;
   width: 50px;
   height: 50px;
+  left: 95%;
 }
 
 #btn3 {
   top: 310%;
   width: 50px;
   height: 50px;
+  left: 95%;
 }
 
 #btn4 {
-  top: 350%;
-  left: 1200px;
+  top: 470%;
+  left: 95%;
   width: 50px;
   height: 50px;
   transform: rotate(180deg);
