@@ -177,13 +177,18 @@ h1 {
   height: 100%;
 }
 
+.map-container {
+  align-items: center;
+  margin: 10px;
+}
+
 .txt-box2 {
   background-color: #0084ff7b;
   border: 5px;
   border-radius: 25px;
   text-align: center;
   padding: 20px;
-  margin: 20px;
+  margin: auto;
   color: white;
   height: 50px;
   width: 1000px;
