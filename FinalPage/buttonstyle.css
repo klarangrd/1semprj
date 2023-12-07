@@ -109,10 +109,6 @@ h1 {
   color: #5895b9;
   text-shadow: 4px 4px 8px #000000;
 }
-@font-face {
-  font-family: "Source Code Pro ExtraLight";
-  src: url("SourceCodePro-ExtraLight.eot") format("eot");
-}
 
 /* flexbox containere til at holde hvert segment */
 .flex-container {
@@ -156,7 +152,7 @@ h1 {
   margin-top: 10px;
 }
 
-/* Fordise styling */
+/* Forside styling */
 #forsidebillede {
   object-fit: fill;
 }
