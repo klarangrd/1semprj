@@ -14,7 +14,8 @@ function Linegraph() {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    .style("color", "white");
 
   // inserting the data from our database
   d3.json("http://localhost:3000/population")
@@ -193,7 +194,7 @@ function Linegraph() {
         .attr("y", 10)
         .attr("width", 20)
         .attr("height", 20)
-        .style("fill", "#f74d4d");
+        .style("fill", "#d94d16");
 
       svg
         .append("text")
@@ -210,7 +211,7 @@ function Linegraph() {
         .attr("y", 40)
         .attr("width", 20)
         .attr("height", 20)
-        .style("fill", "#6f9af7");
+        .style("fill", "#13cbd1");
 
       svg
         .append("text")
@@ -225,8 +226,8 @@ function Linegraph() {
 
       // showing the
       window.showStrokes = function () {
-        d3.select(".lionfish-line").style("stroke", "#f74d4d");
-        d3.select(".reefshark-line").style("stroke", "#6f9af7");
+        d3.select(".lionfish-line").style("stroke", "#d94d16");
+        d3.select(".reefshark-line").style("stroke", "#13cbd1");
       };
     })
     .catch((error) => console.error("Error loading data:", error));

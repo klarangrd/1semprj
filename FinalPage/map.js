@@ -1,5 +1,5 @@
 // Map Dimensions and Data
-const w = 1000;
+const w = 1400;
 const h = 500;
 let zoom = 1400;
 let bubbleData;
