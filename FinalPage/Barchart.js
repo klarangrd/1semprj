@@ -14,7 +14,8 @@ function barChart() {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    .style("color", "white");
 
   // Tooltip objekt appendes til siden. Skal bruges senere til at vise absolutte tal på grafen
   let Tooltip = d3
@@ -89,7 +90,7 @@ function barChart() {
         return height - y(0);
       })
       .attr("fill", "#69b3a2")
-      .attr("style", "outline: solid black")
+      .attr("style", "outline: solid white")
       .attr("id", function (d) {
         return d.lionfish_pop;
       })
@@ -99,7 +100,10 @@ function barChart() {
       })
       .on("mousemove", function (d) {
         let pos = d3.mouse(this);
-        Tooltip.style("left", pos[0] + "px").style("top", pos[1] + 500 + "px");
+        Tooltip.style("left", pos[0] + 180 + "px").style(
+          "top",
+          pos[1] + 750 + "px"
+        );
       })
       .on("mouseleave", function (d) {
         Tooltip.style("opacity", 0);

@@ -40,7 +40,14 @@ button.buttons {
 }
 
 #btn4 {
-  top: 470%;
+  top: 440%;
+  width: 50px;
+  height: 50px;
+  left: 95%;
+}
+
+#btn5 {
+  top: 530%;
   left: 95%;
   width: 50px;
   height: 50px;
