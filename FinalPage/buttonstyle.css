@@ -201,3 +201,10 @@ h1 {
   font-size: 35px;
   color: #f1e4a0;
 }
+
+.graphbtn-line {
+  background-color: #ffc989;
+  border-radius: 5px;
+  border-color: black;
+  border-width: 2px;
+}
