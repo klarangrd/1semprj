@@ -19,7 +19,7 @@ button.buttons {
 }
 
 #btn1 {
-  top: 90%;
+  top: 85%;
   width: 100px;
   height: 100px;
   left: 47.5%;
@@ -95,7 +95,7 @@ button.buttons img:hover {
 h1 {
   position: absolute;
   font-size: 80px;
-  left: 20%;
+  left: 25%;
   top: 35%;
   color: #5895b9;
   text-shadow: 4px 4px 8px #000000;
