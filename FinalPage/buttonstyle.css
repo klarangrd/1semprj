@@ -218,3 +218,9 @@ h1 {
   border-color: black;
   border-width: 2px;
 }
+
+.linetitle {
+  text-align: center;
+  font-size: 35px;
+  color: #f1e4a0;
+}
