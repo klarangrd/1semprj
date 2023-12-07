@@ -7,7 +7,17 @@
     <script src="https://unpkg.com/@turf/turf@6.3.0"></script>
     <script src="btnscript.js"></script>
   </head>
-
+  <script>
+    $(function () {
+      var $body = $(document);
+      $body.bind("scroll", function () {
+        // "Disable" the horizontal scroll.
+        if ($body.scrollLeft() !== 0) {
+          $body.scrollLeft(0);
+        }
+      });
+    });
+  </script>
   <body>
     <section>
       <!--Forside-->
@@ -17,7 +27,11 @@
         </button>
         <h1>Den invasive dragefisk</h1>
         <video width="100%" height="100%" autoplay muted loop id="myVideo">
-          <source id="dragefiskvideo" src="lionfishblur.mp4" type="video/mp4" />
+          <source
+            id="dragefiskvideo"
+            src="Media/lionfishblur.mp4"
+            type="video/mp4"
+          />
         </video>
       </div>
     </section>
