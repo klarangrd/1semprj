@@ -90,7 +90,7 @@ function barChart() {
         return height - y(0);
       })
       .attr("fill", "#69b3a2")
-      .attr("style", "outline: solid white")
+      .attr("style", "outline: thin solid white")
       .attr("id", function (d) {
         return d.lionfish_pop;
       })
