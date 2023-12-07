@@ -175,12 +175,6 @@ h1 {
   height: 100%;
 }
 
-.map-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
 .txt-box2 {
   background-color: #0084ff7b;
   border: 5px;
@@ -205,5 +199,5 @@ h1 {
 .maptitle {
   text-align: center;
   font-size: 35px;
-  color: #69b3a2;
+  color: #f1e4a0;
 }
