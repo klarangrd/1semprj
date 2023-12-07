@@ -201,7 +201,7 @@ function Linegraph() {
         .attr("x", width - 65)
         .attr("y", 25)
         .text("Lionfish")
-        .style("font-size", "12px")
+        .style("font-size", "15px")
         .style("fill", "white");
 
       // Box 2 (Reef Shark)
@@ -218,7 +218,7 @@ function Linegraph() {
         .attr("x", width - 65)
         .attr("y", 55)
         .text("Reef Shark")
-        .style("font-size", "12px")
+        .style("font-size", "15px")
         .style("fill", "white");
 
       // hiding the stroke before the button is clicked
