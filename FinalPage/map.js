@@ -71,7 +71,7 @@ const svg = d3
 //fetch Geojson and Database JSON
 Promise.all([
   d3.json("c2.json"),
-  d3.json("http://localhost:3000/kordinater"),
+  d3.json("https://dragefiskerfarlige.onrender.com/kordinater"),
 ]).then(function (data) {
   const geojson = data[0];
   bubbleData = data[1].LionfishCloud; //collecting the LionfishCloud database

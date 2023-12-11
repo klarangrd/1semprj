@@ -18,7 +18,7 @@ function Linegraph() {
     .style("color", "white");
 
   // inserting the data from our database
-  d3.json("http://localhost:3000/population")
+  d3.json("https://dragefiskerfarlige.onrender.com/population")
     .then(function (data) {
       const lineData = data.LionfishCloud; //specifying the name on our database
 
