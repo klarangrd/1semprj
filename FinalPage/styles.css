@@ -1,0 +1,59 @@
+.flashcards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+.flashcard {
+  margin-bottom: 380px;
+}
+
+.front,
+.back {
+  width: 20%;
+  height: 50%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8fb9cf;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 8fb9cf;
+  transition: transform 0.6s;
+}
+
+.front {
+  background-color: #8fb9cf;
+  font-weight: bold;
+  font-size: 20px;
+  color: whitesmoke;
+} /*if the frontside needs to be a different colour*/
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #a4b4a0;
+  font-size: 17px;
+  text-align: center;
+  padding: 15px;
+  color: whitesmoke;
+} /*transition for the card and colour for the backside*/
+
+.flashcard:hover .front {
+  transform: rotateY(180deg);
+} /* transition*/
+
+.flashcard:hover .back {
+  transform: rotateY(360deg);
+} /*transition*/
+
+.headline {
+  text-align: center;
+  margin-bottom: 100px;
+  font-size: 35px;
+  color: #f1e5a0;
+}
+
+.smaller-text {
+  font-size: 70%;
+}
