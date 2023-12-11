@@ -30,7 +30,9 @@ function barChart() {
     .style("position", "absolute");
 
   // Loader data og gemmer det i fishdata
-  d3.json("http://localhost:3000/population").then(function (data) {
+  d3.json("https://dragefiskerfarlige.onrender.com/population").then(function (
+    data
+  ) {
     const fishdata = data.LionfishCloud;
 
     // Giver knappen en funktion der kalder barchart animationen

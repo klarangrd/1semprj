@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 10000;
+const port = null;
 const { Client } = require("pg");
 const pg = require("pg");
 const cors = require("cors");
