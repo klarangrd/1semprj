@@ -49,7 +49,7 @@ app.get("/kordinater", async (req, res) => {
   }
 });
 app.listen(port, () => {
-  console.log(`Appl. lytter på http://localhost:${port}`);
+  console.log(`Appl. lytter på http://0.0.0.0:${port}`);
 });
 /*
 En anden måde at gøre det på ved at bruge en connection string. Det fylder lidt
