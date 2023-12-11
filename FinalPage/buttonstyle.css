@@ -102,10 +102,10 @@ button.buttons img:hover {
 
 /* overskrift */
 h1 {
-  position: absolute;
+  position: relative;
   font-size: 80px;
-  left: 20%;
-  top: 35%;
+  text-anchor: middle;
+  text-align: center;
   color: #5895b9;
   text-shadow: 4px 4px 8px #000000;
 }
