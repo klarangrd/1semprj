@@ -7,18 +7,11 @@
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="https://unpkg.com/@turf/turf@6.3.0"></script>
     <script src="btnscript.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap"
+    />
   </head>
-  <script>
-    $(function () {
-      var $body = $(document);
-      $body.bind("scroll", function () {
-        // "Disable" the horizontal scroll.
-        if ($body.scrollLeft() !== 0) {
-          $body.scrollLeft(0);
-        }
-      });
-    });
-  </script>
   <body>
     <section>
       <!--Forside-->
@@ -27,7 +20,7 @@
           Barchart <img id="arrow" src="Media/Arrow_downn.png" height: "50%" />
         </button>
         <div style="position: absolute; top: 35%; width: 100%">
-          <h1>Den invasive dragefisk</h1>
+          <h1 style="font-family: Open Sans">Den Invasive Dragefisk</h1>
         </div>
         <video width="100%" height="100%" autoplay muted loop id="myVideo">
           <source

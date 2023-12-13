@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "OpenSans";
+  src: url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
+}
+
 body {
   background-color: #0a6589;
   overflow-x: hidden;
@@ -106,8 +111,9 @@ h1 {
   font-size: 80px;
   text-anchor: middle;
   text-align: center;
-  color: #5895b9;
   text-shadow: 4px 4px 8px #000000;
+  text-shadow: black 0 0 10px;
+  color: #5895b9;
 }
 
 /* flexbox containere til at holde hvert segment */
