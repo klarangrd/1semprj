@@ -153,3 +153,23 @@ function selectedYear() {
   //update the Map with Filtered Data
   updateMap(filteredBubbleData);
 }
+
+svg
+  .append("text")
+  .attr("x", 160)
+  .attr("y", 480)
+  .attr("text-anchor", "middle")
+  .style("font-size", "10px")
+  .style("fill", "grey")
+  .text(
+    "Ref: https://nas.er.usgs.gov/queries/collectioninfo.aspx?SpeciesID=963"
+  );
+
+svg
+  .append("text")
+  .attr("x", 106)
+  .attr("y", 490)
+  .attr("text-anchor", "middle")
+  .style("font-size", "10px")
+  .style("fill", "grey")
+  .text("https://www.mediafire.com/?5faef9y5ct8mn");

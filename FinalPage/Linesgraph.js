@@ -187,8 +187,29 @@ function Linegraph() {
         .style("fill", "#f1e4a0")
         .text("Lionfish vs Reef Shark Population (2010-2018)");
 
-      // Box 1 (Lionfish)
+      // Data reference
       svg
+        .append("text")
+        .attr("x", 120)
+        .attr("y", height + 30)
+        .attr("text-anchor", "middle")
+        .style("font-size", "10px")
+        .style("fill", "#f1e4a0")
+        .text(
+          "Ref: https://nas.er.usgs.gov/queries/collectioninfo.aspx?SpeciesID=963"
+        );
+
+      svg
+        .append("text")
+        .attr("x", 40)
+        .attr("y", height + 40)
+        .attr("text-anchor", "middle")
+        .style("font-size", "10px")
+        .style("fill", "#f1e4a0")
+        .text("github.com/mamacneil/FinPrint");
+
+      // Box 1 (Lionfish)
+      https: svg
         .append("rect")
         .attr("x", width - 90)
         .attr("y", 10)

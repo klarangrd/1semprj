@@ -75,6 +75,17 @@ function barChart() {
       .style("font-size", "36px")
       .style("fill", chartColor)
       .text("Antal Dragefisk i Caribien");
+
+    svg
+      .append("text")
+      .attr("x", 120)
+      .attr("y", height + 50)
+      .attr("text-anchor", "middle")
+      .style("font-size", "10px")
+      .style("fill", chartColor)
+      .text(
+        "Ref: https://nas.er.usgs.gov/queries/collectioninfo.aspx?SpeciesID=963"
+      );
     // Barchartet laves, med mouseover/move/leave for hver bar
     svg
       .selectAll("mybar")
