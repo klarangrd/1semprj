@@ -1,13 +1,15 @@
 barChart();
 
 function barChart() {
-  // Sætter dimensioner for grafen
+  // Set dimensions for the graph
   let margin = { top: 30, right: 30, bottom: 70, left: 60 },
     width = 600 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
+  // Color for the chart text
   let chartColor = "#f1e4a0";
-  // SVGen bliver appended til siden
+
+  // SVG gets appended to the page
   let svg = d3
     .select("#my_dataviz")
     .append("svg")
@@ -17,7 +19,7 @@ function barChart() {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .style("color", "white");
 
-  // Tooltip objekt appendes til siden. Skal bruges senere til at vise absolutte tal på grafen
+  // Tooltip object gets appended to the visualisation. It will be used to display total value of each bar, by the mouse
   let Tooltip = d3
     .select("#my_dataviz")
     .append("div")
@@ -29,18 +31,18 @@ function barChart() {
     .style("padding", "5px")
     .style("position", "absolute");
 
-  // Loader data og gemmer det i fishdata
+  // Loads data from our database and saves it in the fishdata variable
   d3.json("https://dragefiskerfarlige.onrender.com/population").then(function (
     data
   ) {
     const fishdata = data.LionfishCloud;
 
-    // Giver knappen en funktion der kalder barchart animationen
+    // Gives the animation function to the button by the chart
     document.getElementById("barKnap").onclick = function () {
       barAnimation();
     };
 
-    // X-akse
+    // X-axis
     let x = d3
       .scaleBand()
       .range([0, width])
@@ -51,6 +53,7 @@ function barChart() {
       )
       .padding(0.2);
 
+    // Gives the chart text on the x-axis a slight tilt
     svg
       .append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -60,7 +63,7 @@ function barChart() {
       .style("text-anchor", "end")
       .style("fill", chartColor);
 
-    // Y-akse
+    // Y-axis
     let y = d3.scaleLinear().domain([0, 13000]).range([height, 0]);
     svg
       .append("g")
@@ -68,6 +71,7 @@ function barChart() {
       .selectAll("text")
       .style("fill", chartColor);
 
+    // Chart title
     svg
       .append("text")
       .attr("x", width / 2)
@@ -76,6 +80,7 @@ function barChart() {
       .style("fill", chartColor)
       .text("Antal Dragefisk i Caribien");
 
+    // Data source link
     svg
       .append("text")
       .attr("x", 120)
@@ -86,7 +91,8 @@ function barChart() {
       .text(
         "Ref: https://nas.er.usgs.gov/queries/collectioninfo.aspx?SpeciesID=963"
       );
-    // Barchartet laves, med mouseover/move/leave for hver bar
+
+    // Barchart gets created with mouseover/leave/move
     svg
       .selectAll("mybar")
       .data(fishdata)
@@ -96,7 +102,7 @@ function barChart() {
         return x(d.year);
       })
       .attr("y", function (d) {
-        return y(0); // Højde er 0 til at starte med for senere at animere til den rigtige højde
+        return y(0); // Height of bars are 0 at the moment, but will be animated to their real height afterwards
       })
       .attr("width", x.bandwidth())
       .attr("height", function (d) {
@@ -107,10 +113,12 @@ function barChart() {
       .attr("id", function (d) {
         return d.lionfish_pop;
       })
+      // Bars changes color on mouseover
       .on("mouseover", function (d) {
         Tooltip.style("opacity", 1).html("Population: " + this.id);
         d3.select(this).style("stroke", "black").style("opacity", 0.8);
       })
+      // Tooltip gets attached to the mouse when moving over the bar
       .on("mousemove", function (d) {
         let pos = d3.mouse(this);
         Tooltip.style("left", pos[0] + 180 + "px").style(
