@@ -70,7 +70,7 @@ button.buttons {
     transform: scale(1);
   }
 }
-
+/* Piler inde i scroll-knapper */
 button.buttons img {
   vertical-align: middle;
   position: relative;
@@ -162,7 +162,7 @@ h1 {
 #forsidebillede {
   object-fit: fill;
 }
-
+/* Forside video */
 #dragefiskvideo {
   box-shadow: 10px 10px 5px 12px lightblue;
 }
