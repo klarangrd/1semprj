@@ -1,9 +1,9 @@
--- Vi skulle kun bruge tal fra området omkring karibien, så alle andre regioner sorteres fra
+-- We only needed the numbers from the area around the Caribbean, so every other region is sorted out 
 DELETE FROM shark_tmp
 WHERE region_name != 'Western Atlantic';
 
--- Alt data var som udgangspunkt formateret som tekst
--- så vi lavede årstallene i begge tabeller om til integers
+-- All data was from the beginning formatet as text
+-- Then we made the years in both tables into integers
 ALTER TABLE lionfish_tmp
 ALTER COLUMN "year" TYPE INT 
 USING "year"::integer;
@@ -12,8 +12,8 @@ ALTER TABLE shark_tmp
 ALTER COLUMN trip_year TYPE INT 
 USING trip_year::integer;
 
--- Vi vil gerne sammenligne populationstallene for både dragefisk og hajer
--- så her indsætter vi et årstal sammen med hver fisk's respektive befolkningstal
+-- We want to compare the population numbers from both lionfish and reefshark
+-- Then we insert the years together with every fish' respective population number
 INSERT INTO populationdata ("year",lionfish_pop,shark_pop)
 VALUES (2010,(SELECT COUNT("year") FROM lionfish_tmp WHERE "year" = 2010),(SELECT COUNT(trip_year) FROM shark_tmp WHERE trip_year = 2010)),
 (2011,(SELECT COUNT("year") FROM lionfish_tmp WHERE "year" = 2011 OR year < 2011),(SELECT COUNT(trip_year) FROM shark_tmp WHERE trip_year = 2011)),
@@ -25,14 +25,14 @@ VALUES (2010,(SELECT COUNT("year") FROM lionfish_tmp WHERE "year" = 2010),(SELEC
 (2017,(SELECT COUNT("year") FROM lionfish_tmp WHERE "year" = 2017 OR year < 2017),(SELECT COUNT(trip_year) FROM shark_tmp WHERE trip_year = 2017)),
 (2018,(SELECT COUNT("year") FROM lionfish_tmp WHERE "year" = 2018 OR year < 2018),(SELECT COUNT(trip_year) FROM shark_tmp WHERE trip_year = 2018));
 
--- Her skaber vi et view, som kan bruges til at hente kordinater for dragefiskene ud
+-- Here we create a view, which can be used to fetch the coordinates for the lionfish
 CREATE VIEW kordinater AS
 SELECT lionfish_tmp.longetude,lionfish_tmp.latitude
 FROM lionfish_tmp;
 
--- Vores kordinater i datasættet er formateret forkert, der er mange der har ekstra kommaer
--- og kommaer forkerte steder, så vi fjerner først alle kommaerne og indsætter dem igen efter 
--- henholdsvis anden og tredje tegn. Alt efter om det er longitude eller latitude
+-- Our coordinates in the dataset are formattet wrong, there are a lot of extra commas
+-- and commas in the wrong places, so we firstly remove all commas and then insert them again after
+-- the second and third character respectively. This depends on whether it is longitude or latitude
 UPDATE lionfish_tmp
 SET latitude = left(translate(latitude, '.', ''), 2) || '.' || right(translate(latitude, '.', ''), -2)
 
