@@ -1,4 +1,3 @@
-// Map Dimensions and Data
 const w = 1400;
 const h = 500;
 let zoom = 1400;
@@ -154,7 +153,7 @@ function selectedYear() {
   updateMap(filteredBubbleData);
 }
 
-svg
+svg //sources
   .append("text")
   .attr("x", 160)
   .attr("y", 480)
